@@ -11,14 +11,14 @@ import axios from 'axios';
 import ImageGallery from '@/components/ImageGallery.vue';
 export default {
   name: 'Home',
+  components: {
+    ImageGallery,
+  },
   data() {
     return {
       photos: [],
       error: '',
     }
-  },
-  components: {
-    ImageGallery,
   },
   created() {
     this.getPhotos();

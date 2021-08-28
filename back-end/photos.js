@@ -73,8 +73,7 @@ router.get("/", validUser, async (req, res) => {
     }
   });
 
-
-  // get all photos
+// get all photos
 router.get("/all", async (req, res) => {
     try {
       let photos = await Photo.find().sort({
@@ -86,6 +85,7 @@ router.get("/all", async (req, res) => {
       return res.sendStatus(500);
     }
   });
+  
   
 
 
