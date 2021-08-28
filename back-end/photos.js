@@ -56,6 +56,24 @@ router.post("/", validUser, upload.single('photo'), async (req, res) => {
     }
   });
   
+
+  // get my photos
+router.get("/", validUser, async (req, res) => {
+    // return photos
+    try {
+      let photos = await Photo.find({
+        user: req.user
+      }).sort({
+        created: -1
+      }).populate('user');
+      return res.send(photos);
+    } catch (error) {
+      console.log(error);
+      return res.sendStatus(500);
+    }
+  });
+
+
   module.exports = {
     model: Photo,
     routes: router,
