@@ -5,8 +5,12 @@ import store from "./store";
 
 Vue.config.productionTip = false;
 
+let data = {
+  user: null
+}
+
 new Vue({
+  data,
   router,
-  store,
-  render: (h) => h(App),
-}).$mount("#app");
+  render: h => h(App)
+}).$mount('#app')
