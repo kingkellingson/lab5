@@ -1,12 +1,38 @@
 <template>
-  <div class="home">
-    
-  </div>
+<div class="home">
+  <image-gallery :photos="photos" />
+  <p v-if="error">{{error}}</p>
+</div>
 </template>
 
-<script>
 
+<script>
+import axios from 'axios';
+import ImageGallery from '@/components/ImageGallery.vue';
 export default {
-  name: "Home",
-};
+  name: 'Home',
+  data() {
+    return {
+      photos: [],
+      error: '',
+    }
+  },
+  components: {
+    ImageGallery,
+  },
+  created() {
+    this.getPhotos();
+  },
+  methods: {
+    async getPhotos() {
+      try {
+        let response = await axios.get("/api/photos/all");
+        this.photos = response.data;
+      } catch (error) {
+        this.error = error.response.data.message;
+      }
+    },
+  }
+}
 </script>
+
