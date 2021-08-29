@@ -16,12 +16,12 @@
 
 <script>
 import moment from 'moment';
-import Photo from '@/components/Photo.vue';
+//import Photo from '@/components/Photo.vue';
 export default {
   name: 'ImageGallery',
-  components: {
-    Photo,
-  },
+  // components: {
+  //   Photo,
+  // },
   data() {
     return {
      selectedPhoto: null,
