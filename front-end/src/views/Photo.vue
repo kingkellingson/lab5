@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import moment from 'moment';
 import axios from 'axios';
 export default {
   name: 'Photo',
@@ -32,7 +33,13 @@ export default {
         console.log("Returned Photo Object: ", this.photos);
         console.log("with array: ", this.photos.data);
         // return photos.data;
-      }  
+      },
+      formatDate(date) {
+      if (moment(date).diff(Date.now(), 'days') < 15)
+        return moment(date).fromNow();
+      else
+        return moment(date).format('d MMMM YYYY');
+    },  
   },
   created() {
     this.id = this.$route.params.id;
