@@ -29,7 +29,7 @@ export default {
   created() {
     this.id = this.$route.params.id;
     console.log("you have created: ", this.path);
-    this.photo = getPhoto();
+    this.photo = this.getPhoto();
   },
 }
 </script>
