@@ -1,7 +1,7 @@
 <template>
 <div>
   <section class="image-gallery">
-    <div class="image" v-for="photo in photos" v-bind:key="photo._id">
+    <div class="image" v-for="photo in photos" v-bind:key="photo._id" @click="selectPhoto(photo)">
       <router-link class="photoLink" :to="{ name: 'photo', params: { id: photo._id }}"><img :src="photo.path" /></router-link>
       <div class="photoInfo">
         <p class="photoTitle">{{photo.title}}</p>
@@ -19,6 +19,11 @@ import moment from 'moment';
 
 export default {
   name: 'ImageGallery',
+  data() {
+    return {
+     selectedPhoto: null,
+    }
+  },
   props: {
     photos: Array
   },
@@ -28,7 +33,11 @@ export default {
         return moment(date).fromNow();
       else
         return moment(date).format('d MMMM YYYY');
-    }
+    },
+    selectPhoto(photo) {
+      this.selectedPhoto = photo;
+      console.log("you have selected this photo: ", this.selectedPhoto);
+    },
   }
 }
 </script>
