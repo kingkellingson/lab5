@@ -59,7 +59,8 @@ export default {
 }
 
 .image img{
-    height: 100%;
+    width: 100%;
+    max-height: 10vw;
     object-fit:fill;
 }
 
