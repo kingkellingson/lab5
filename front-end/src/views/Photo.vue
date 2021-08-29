@@ -4,7 +4,7 @@
     <p>Congratulations, you have ordered {{id}}</p>
   </div>
   <div class="image">
-    <img :src="photo.data.path" alt="no image due to error">
+    <img :src="photo.data[0].path" alt="no image due to error">
   </div>
 </div>
 </template>
@@ -23,7 +23,7 @@ export default {
       async getPhoto() {
         let photo = await axios.get("/api/photos/"+this.id);
         console.log("Returned Photo: ", photo)
-        console.log("data path: ", photo.data.path);
+        console.log("data path: ", photo.data[0].path);
         return photo;
       }  
   },
