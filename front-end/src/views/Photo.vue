@@ -4,7 +4,7 @@
     <p>Congratulations, you have ordered {{id}}</p>
   </div>
   <div class="image">
-    <img :src="'/images/'+id" alt="no image due to error">
+    <img :src="selectedPhoto.path" alt="no image due to error">
   </div>
 </div>
 </template>
@@ -17,6 +17,9 @@ export default {
       id: '',
       picture: {},
     }
+  },
+  props: {
+    selectedPhoto: Object,
   },
   created() {
     this.picture = this.$route.params;

@@ -16,9 +16,12 @@
 
 <script>
 import moment from 'moment';
-
+import Photo from '@/components/Photo.vue';
 export default {
   name: 'ImageGallery',
+  components: {
+    Photo,
+  },
   data() {
     return {
      selectedPhoto: null,
