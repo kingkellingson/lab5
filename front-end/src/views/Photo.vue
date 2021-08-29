@@ -42,8 +42,8 @@ export default {
 </script>
 
 <style scoped>
-.info {
-    /* margin-top: 200px; */
+.image {
+    object-fit: contain;
 }
 
 </style>
