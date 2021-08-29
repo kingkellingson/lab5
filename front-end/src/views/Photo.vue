@@ -23,16 +23,16 @@ export default {
   methods: {
       async getPhoto() {
         let photo = await axios.get("/api/photos/"+this.id);
-        console.log("Returned Photo: ", photo)
-        this.path = photo.data[0].path,
+        console.log("Returned Photo: ", photo);
+        let path = photo.data[0].path;
         console.log("data path: ", photo.data[0].path);
-        return photo;
+        return path;
       }  
   },
   created() {
     this.id = this.$route.params.id;
     console.log("you have created: ", this.id);
-    this.photo = this.getPhoto();
+    this.path = this.getPhoto();
     
   },
 }
