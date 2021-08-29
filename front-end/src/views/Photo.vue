@@ -3,9 +3,9 @@
   <div class="info">
     <p>Congratulations, you have ordered {{id}}</p>
   </div>
-  <!-- <div class="image">
-    <img :src="'/images/products/'+product.image">
-  </div> -->
+  <div class="image">
+    <img :src="'/images/'+id" alt="no image due to error">
+  </div>
 </div>
 </template>
 
