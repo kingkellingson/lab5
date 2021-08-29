@@ -19,8 +19,9 @@ export default {
     }
   },
   created() {
-    this.picture = this.$route.params.id;
+    this.picture = this.$route.params;
     this.id = this.$route.params.id;
+    console.log(this.picture)
     // this.random =
     //   Math.floor(Math.random() * 90) + 10;
     // this.amount = this.random * parseFloat(this.product.price.replace(/\$|,/g, ''));
