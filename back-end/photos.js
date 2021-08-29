@@ -86,6 +86,22 @@ router.get("/all", async (req, res) => {
     }
   });
   
+
+// get a single photo
+router.get("/:id", async (req, res) => {
+  try {
+    let photo = await Photo.find()
+    console.log("1found: ", photo)
+    let myPhoto = await Photo.find({
+      _id: req.params.id
+    })
+    console.log("2found: ", myPhoto)
+    return res.send(myPhoto);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(500);
+  }
+});
   
 
 
