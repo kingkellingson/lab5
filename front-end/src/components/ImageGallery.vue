@@ -2,7 +2,7 @@
 <div>
   <section class="image-gallery">
     <div class="image" v-for="photo in photos" v-bind:key="photo._id">
-      <img :src="photo.path" />
+      <router-link class="photoLink" :to="{ name: 'photo', params: { id: photo._id }}"><img :src="photo.path" /></router-link>
       <div class="photoInfo">
         <p class="photoTitle">{{photo.title}}</p>
         <p class="photoName">{{photo.user.firstName}} {{photo.user.lastName}}</p>
@@ -36,6 +36,15 @@ export default {
 
 
 <style scoped>
+
+.photoLink {
+  transition: box-shadow .3s;
+}
+
+.photoLink:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); ;
+}
+
 .photoInfo {
   display: flex;
   justify-content: space-between;
