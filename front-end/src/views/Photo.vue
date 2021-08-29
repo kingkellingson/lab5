@@ -1,10 +1,10 @@
 <template>
 <div>
   <div class="info">
-    <p>Id is {{id}} using path {{photos.data.path}}</p>
+    <p>Id is {{id}} using path {{photos.data[0].path}}</p>
   </div>
   <div class="image">
-    <img :src='photos.data.path' alt="no image due to error">
+    <img :src='photos.data[0].path' alt="no image due to error">
   </div>
 </div>
 </template>
