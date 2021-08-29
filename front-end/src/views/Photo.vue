@@ -23,8 +23,8 @@ export default {
   methods: {
       async getPhoto() {
         this.photos = await axios.get("/api/photos/"+this.id);
-        console.log("Returned Photo Object: ", photos);
-        console.log("with array: ", photos.data);
+        console.log("Returned Photo Object: ", this.photos);
+        console.log("with array: ", this.photos.data);
         // return photos.data;
       }  
   },
