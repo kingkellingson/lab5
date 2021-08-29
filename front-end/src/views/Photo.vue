@@ -60,7 +60,7 @@ export default {
 
 .image img{
     width: 100%;
-    max-height: 10vw;
+    max-height: 100vw;
     object-fit:fill;
 }
 
