@@ -3,8 +3,8 @@
   <div class="info">
     <p>Congratulations, you have ordered {{id}}</p>
   </div>
-  <div class="image">
-    <img :src='this.path' alt="no image due to error">
+  <div class="image" v-for="photo in photos" v-bind:key="photo._id">
+    <img :src='photo.path' alt="no image due to error">
   </div>
 </div>
 </template>
@@ -16,26 +16,25 @@ export default {
   data() {
     return {
       id: '',
-      photo: '',
+      photos: '',
       path: '',
     }
   },
   methods: {
       async getPhoto() {
-        this.photo = await axios.get("/api/photos/"+this.id);
-        console.log("Returned Photo: ", this.photo);
-        // let path = photo.data[0].path;
-        // console.log("data path: ", photo.data[0].path);
-        // return path;
+        this.photos = await axios.get("/api/photos/"+this.id);
+        console.log("Returned Photo array: ", this.photos);
+        // console.log("with path: ", this.photos);
       }  
   },
   created() {
     this.id = this.$route.params.id;
-    this.path = this.$route.params.path;
+    
     console.log("you have created: ", this.id);
-    console.log("with path:small ", this.path);
+    
     this.getPhoto();
-    // this.path = this.getPhoto();
+    // this.photos = this.getPhoto();
+    
     
   },
 }
