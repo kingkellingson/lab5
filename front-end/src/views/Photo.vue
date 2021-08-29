@@ -60,6 +60,8 @@ export default {
 }
 
 .image {
+    display: flex;
+    justify-content: center;
     /* width: 100%; */
     margin: 0 auto;
 }
