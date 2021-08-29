@@ -8,6 +8,7 @@
     <div class="image">
     <img :src='photos.data[0].path' alt="no image due to error">
   </div>
+  <p class="photoDescription">{{photos.data[0].description}}</p>
   
 </div>
 </template>
@@ -58,7 +59,7 @@ export default {
 }
 
 .image img{
-    width: 100%;
+    height: 100%;
     object-fit:cover;
 }
 
@@ -69,6 +70,11 @@ export default {
 }
 
 .photoInfo p {
+  margin: 0px;
+}
+
+.photoDescription {
+  font-size: 1.2em;
   margin: 0px;
 }
 
