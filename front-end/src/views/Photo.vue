@@ -1,10 +1,10 @@
 <template>
 <div>
   <div class="info">
-    <p>Congratulations, you have ordered {{id}} using path {{photos.path}}</p>
+    <p>Id is {{id}} using path {{photos.data[0].path}}</p>
   </div>
-  <div class="image" v-for="photo in photos" v-bind:key="photo._id">
-    <img :src='photo.path' alt="no image due to error">
+  <div class="image">
+    <img :src='photos.data[0].path' alt="no image due to error">
   </div>
 </div>
 </template>
@@ -22,10 +22,10 @@ export default {
   },
   methods: {
       async getPhoto() {
-        let photos = await axios.get("/api/photos/"+this.id);
+        this.photos = await axios.get("/api/photos/"+this.id);
         console.log("Returned Photo Object: ", photos);
         console.log("with array: ", photos.data);
-        return photos.data;
+        // return photos.data;
       }  
   },
   created() {
@@ -33,8 +33,8 @@ export default {
     
     console.log("you have created: ", this.id);
     
-    // this.getPhoto();
-    this.photos = this.getPhoto();
+    this.getPhoto();
+    // this.photos = this.getPhoto();
     
     
   },
@@ -43,7 +43,7 @@ export default {
 
 <style scoped>
 .info {
-    margin-top: 200px;
+    /* margin-top: 200px; */
 }
 
 </style>
