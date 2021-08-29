@@ -22,9 +22,10 @@ export default {
   },
   methods: {
       async getPhoto() {
-        this.photos = await axios.get("/api/photos/"+this.id);
-        console.log("Returned Photo array: ", this.photos);
-        // console.log("with path: ", this.photos);
+        let photos = await axios.get("/api/photos/"+this.id);
+        console.log("Returned Photo Object: ", photos);
+        console.log("with array: ", photos.data);
+        return photos.data;
       }  
   },
   created() {
@@ -32,8 +33,8 @@ export default {
     
     console.log("you have created: ", this.id);
     
-    this.getPhoto();
-    // this.photos = this.getPhoto();
+    // this.getPhoto();
+    this.photos = this.getPhoto();
     
     
   },
