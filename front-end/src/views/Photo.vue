@@ -54,6 +54,11 @@ export default {
 </script>
 
 <style scoped>
+
+* {
+    margin: 0 auto;
+}
+
 .image {
     /* width: 100%; */
     margin: 0 auto;
