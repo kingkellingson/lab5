@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="info">
-    <p>Congratulations, you have ordered {{id}}</p>
+    <p>Congratulations, you have ordered {{id}} using path {{photos.path}}</p>
   </div>
   <div class="image" v-for="photo in photos" v-bind:key="photo._id">
     <img :src='photo.path' alt="no image due to error">
@@ -40,3 +40,10 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.info {
+    margin-top: 200px;
+}
+
+</style>
