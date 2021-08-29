@@ -27,6 +27,7 @@ export default {
     async getPhotos() {
       try {
         let response = await axios.get("/api/photos/all");
+        console.log ("got this response: ", response)
         this.photos = response.data;
       } catch (error) {
         this.error = error.response.data.message;
