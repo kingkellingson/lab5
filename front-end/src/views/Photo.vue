@@ -4,7 +4,7 @@
     <p>Congratulations, you have ordered {{id}}</p>
   </div>
   <div class="image">
-    <img :src="123" alt="no image due to error">
+    <img :src="path" alt="no image due to error">
   </div>
 </div>
 </template>
@@ -15,16 +15,16 @@ export default {
   data() {
     return {
       id: '',
-      picture: {},
+      path: {},
     }
   },
 //   props: {
 //     selectedPhoto: Object,
 //   },
   created() {
-    this.picture = this.$route.path;
+    this.path = this.$route.path;
     this.id = this.$route.params.id;
-    console.log("you have created: ", this.picture)
+    console.log("you have created: ", this.path)
     // this.random =
     //   Math.floor(Math.random() * 90) + 10;
     // this.amount = this.random * parseFloat(this.product.price.replace(/\$|,/g, ''));
