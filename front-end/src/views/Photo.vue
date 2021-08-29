@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="info">
-    <p>Congratulations, you have ordered {{id}}
+    <p>Congratulations, you have ordered {{id}}</p>
   </div>
   <!-- <div class="image">
     <img :src="'/images/products/'+product.image">
