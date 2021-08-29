@@ -60,7 +60,7 @@ export default {
 
 .image img{
     height: 100%;
-    object-fit:cover;
+    object-fit:fill;
 }
 
 .photoInfo {
