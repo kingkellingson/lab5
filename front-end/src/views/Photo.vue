@@ -21,14 +21,14 @@ export default {
   },
   methods: {
       async getPhoto() {
-        console.log("called Get Photo")
         let photo = await axios.get("/api/photos/"+this.id);
+        console.log("Returned Photo: ", photo)
         return photo;
       }  
   },
   created() {
     this.id = this.$route.params.id;
-    console.log("you have created: ", this.path);
+    console.log("you have created: ", this.id);
     this.photo = this.getPhoto();
   },
 }
