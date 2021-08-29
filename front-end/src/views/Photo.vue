@@ -1,14 +1,14 @@
 <template>
 <div>
   <div class="photoInfo">
-        <p class="photoTitle">{{photos.data[0].title}}</p>
-        <p class="photoName">{{photos.data[0].user.firstName}} {{photos.data[0].user.lastName}}</p>
+        <p class="photoTitle">Title: {{photos.data[0].title}}</p>
+        <p class="photoName">Taken by: {{photos.data[0].user.firstName}} {{photos.data[0].user.lastName}}</p>
       </div>
     <p class="photoDate">{{formatDate(photos.data[0].created)}}</p>
     <div class="image">
     <img :src='photos.data[0].path' alt="no image due to error">
   </div>
-  <p class="photoDescription">{{photos.data[0].description}}</p>
+  <p class="photoDescription">Description: {{photos.data[0].description}}</p>
   
 </div>
 </template>
