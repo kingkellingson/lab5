@@ -1,39 +1,30 @@
 <template>
-<div class="dashboard">
-  <MyPhotos v-if="user" />
-  <Login v-else />
+<div>
+  <div class="info">
+    <p>Congratulations, you have ordered {{id}}
+  </div>
+  <!-- <div class="image">
+    <img :src="'/images/products/'+product.image">
+  </div> -->
 </div>
 </template>
 
 <script>
-import MyPhotos from '@/components/MyPhotos.vue';
-import Login from '@/components/Login.vue';
-import axios from 'axios';
 export default {
-  name: 'dashboard',
-  components: {
-    MyPhotos,
-    Login,
-  },
-  async created() {
-    try {
-      let response = await axios.get('/api/users');
-      this.$root.$data.user = response.data.user;
-    } catch (error) {
-      this.$root.$data.user = null;
+  name: 'Photo',
+  data() {
+    return {
+      id: '',
+      picture: {},
     }
   },
-  computed: {
-    user() {
-      return this.$root.$data.user;
-    }
-  }
+  created() {
+    this.picture = this.$route.params.id;
+    this.id = this.$route.params.id;
+    // this.random =
+    //   Math.floor(Math.random() * 90) + 10;
+    // this.amount = this.random * parseFloat(this.product.price.replace(/\$|,/g, ''));
+    // this.amount = this.amount.toFixed(2);
+  },
 }
 </script>
-
-
-<style scoped>
-.dashboard {
-  padding-top: 10px;
-}
-</style>
