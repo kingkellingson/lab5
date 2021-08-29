@@ -10,7 +10,7 @@
         <p class="photoTitle">{{photos.data[0].title}}</p>
         <p class="photoName">{{photos.data[0].user.firstName}} {{photos.data[0].user.lastName}}</p>
       </div>
-    <p class="photoDate">{{formatDate(photo.created)}}</p>
+    <p class="photoDate">{{formatDate(photos.data[0].created)}}</p>
 </div>
 </template>
 
