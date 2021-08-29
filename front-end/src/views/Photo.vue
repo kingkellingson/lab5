@@ -6,6 +6,11 @@
   <div class="image">
     <img :src='photos.data[0].path' alt="no image due to error">
   </div>
+  <div class="photoInfo">
+        <p class="photoTitle">{{photos.data[0].title}}</p>
+        <p class="photoName">{{photos.data[0].user.firstName}} {{photos.data[0].user.lastName}}</p>
+      </div>
+      <p class="photoDate">{{formatDate(photo.created)}}</p>
 </div>
 </template>
 
@@ -18,6 +23,7 @@ export default {
       id: '',
       photos: '',
       path: '',
+      user: null,
     }
   },
   methods: {
