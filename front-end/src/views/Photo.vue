@@ -33,7 +33,7 @@ export default {
     this.id = this.$route.params.id;
     this.path = this.$route.params.path;
     console.log("you have created: ", this.id);
-    console.log("with path:", this.path);
+    console.log("with path:small ", this.path);
     this.getPhoto();
     // this.path = this.getPhoto();
     
