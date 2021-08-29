@@ -2,7 +2,7 @@
 <div>
   <section class="image-gallery">
     <div class="image" v-for="photo in photos" v-bind:key="photo._id" @click="selectPhoto(photo)">
-      <router-link class="photoLink" :to="{ name: 'photo', params: { id: photo._id, path: selectedPhoto.path }}"><img :src="photo.path" /></router-link>
+      <router-link class="photoLink" :to="{ name: 'photo', params: { id: photo._id, path: photo.path }}"><img :src="photo.path" /></router-link>
       <div class="photoInfo">
         <p class="photoTitle">{{photo.title}}</p>
         <p class="photoName">{{photo.user.firstName}} {{photo.user.lastName}}</p>
