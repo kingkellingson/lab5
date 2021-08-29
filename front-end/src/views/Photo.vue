@@ -43,6 +43,10 @@ export default {
 
 <style scoped>
 .image {
+    width: 100%;
+}
+
+.image img{
     object-fit: contain;
 }
 
