@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       id: '',
-      path: {},
+      path: '',
     }
   },
 //   props: {
