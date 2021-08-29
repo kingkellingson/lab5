@@ -24,7 +24,7 @@ export default {
       async getPhoto() {
         let photo = await axios.get("/api/photos/"+this.id);
         console.log("Returned Photo: ", photo)
-        path = photo.data[0].path,
+        this.path = photo.data[0].path,
         console.log("data path: ", photo.data[0].path);
         return photo;
       }  
