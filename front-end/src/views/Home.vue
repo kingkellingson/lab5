@@ -8,12 +8,12 @@
 
 <script>
 import axios from 'axios';
-import ImageGallery from '@/components/ImageGallery.vue';
+//import ImageGallery from '@/components/ImageGallery.vue';
 export default {
   name: 'Home',
-  components: {
-    ImageGallery,
-  },
+  // components: {
+  //   ImageGallery,
+  // },
   data() {
     return {
       photos: [],

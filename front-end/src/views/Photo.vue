@@ -18,13 +18,13 @@ export default {
       picture: {},
     }
   },
-  props: {
-    selectedPhoto: Object,
-  },
+//   props: {
+//     selectedPhoto: Object,
+//   },
   created() {
-    this.picture = this.$route.params;
+    this.picture = this.$route.path;
     this.id = this.$route.params.id;
-    console.log(this.picture)
+    console.log("you have created: ", this.picture)
     // this.random =
     //   Math.floor(Math.random() * 90) + 10;
     // this.amount = this.random * parseFloat(this.product.price.replace(/\$|,/g, ''));
