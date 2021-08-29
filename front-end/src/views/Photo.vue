@@ -59,7 +59,7 @@ export default {
 }
 
 .image img{
-    /* width: 100%; */
+    width: 100%;
     max-height: 667px;
     object-fit:cover;
     margin: 0 auto;
