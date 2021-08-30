@@ -9,7 +9,20 @@
     <img :src='photos.data[0].path' alt="no image due to error">
   </div>
   <p class="photoDescription">Description: {{photos.data[0].description}}</p>
-  
+  <div>
+        <button @click="setCreating" class="pure-button button-xsmall">
+            <i class="fas fa-plus" />
+        </button>
+  </div>
+  <form class="pure-form" v-if="creating" @submit.prevent="addTicket">
+    <legend>Add Comment:</legend>
+    <fieldset>
+        <textarea v-model="problem"></textarea>
+        <br />
+        <button @click="cancelCreating" class="pure-button space-right">Cancel</button>
+        <button class="pure-button pure-button-primary" type="submit">Submit</button>
+    </fieldset>
+    </form>
 </div>
 </template>
 
@@ -24,6 +37,9 @@ export default {
       photos: '',
       path: '',
       user: null,
+      creating: false,
+      problem: '',
+      tickets: [],
     }
   },
   methods: {
@@ -38,7 +54,26 @@ export default {
         return moment(date).fromNow();
       else
         return moment(date).format('d MMMM YYYY');
-    },  
+    },
+     async addTicket() {
+      try {
+        // await axios.post("/api/tickets", {
+        //   problem: this.problem
+        // });
+        this.problem = "";
+        this.creating = false;
+        this.getTickets();
+        return true;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    setCreating() {
+        this.creating = true;
+    },
+    cancelCreating() {
+        this.creating = false;
+    },
   },
   created() {
     this.id = this.$route.params.id;
