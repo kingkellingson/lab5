@@ -91,11 +91,11 @@ router.get("/all", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     let photo = await Photo.find()
-    console.log("1found: ", photo)
+    // console.log("1found: ", photo)
     let myPhoto = await Photo.find({
       _id: req.params.id
     }).populate('user');
-    console.log("2found: ", myPhoto)
+    // console.log("2found: ", myPhoto)
     return res.send(myPhoto);
   } catch (error) {
     console.log(error);
