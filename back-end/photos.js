@@ -194,9 +194,7 @@ try {
   comments1 = await Comment.find().sort({
       created: -1
   }).populate('myUser');
-  console.log("get comments returned these comments: ", comments1)
-
-  console.log("all comments", )
+  console.log("all comments", comments1)
   
   comments = await Comment.find({
     photo: req.body.photo
