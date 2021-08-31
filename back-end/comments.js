@@ -30,7 +30,7 @@ const commentSchema = new mongoose.Schema({
 
 
   // The model for a comment
-const Comment = mongoose.model('Comment', ticketSchema);
+const Comment = mongoose.model('Comment', commentSchema);
 
 
   //create a comment
