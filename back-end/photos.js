@@ -156,22 +156,22 @@ router.post("/:id/post", validUser, async (req, res) => {
     words: req.body.commentToAdd
   });
 
-  console.log("added comment: ", myComment)
-  console.log("with user: ", myComment.myUser)
-  console.log("with photo: ", myComment.photo)
-  console.log("______________________TEST!_______________________")
+  // console.log("added comment: ", myComment)
+  // console.log("with user: ", myComment.myUser)
+  // console.log("with photo: ", myComment.photo)
+  // console.log("______________________TEST!_______________________")
 
-  let myPhoto1 = await Photo.find().populate('user');
-  console.log("All found photos: ", myPhoto1)
+  // let myPhoto1 = await Photo.find().populate('user');
+  // console.log("All found photos: ", myPhoto1)
 
-  let myPhoto2 = await Photo.find({
-    _id: req.body.photo,
-  }).populate('user');
-  console.log("Found photo: ", myPhoto2)
+  // let myPhoto2 = await Photo.find({
+  //   _id: req.body.photo,
+  // }).populate('user');
+  // console.log("Found photo: ", myPhoto2)
 
-  console.log("______________________TEST!_______________________")
-  console.log("params: ", req.params.id)
-  console.log("body: ", req.body.photo)
+  // console.log("______________________TEST!_______________________")
+  // console.log("params: ", req.params.id)
+  // console.log("body: ", req.body.photo)
 
 
   try {
@@ -190,6 +190,14 @@ router.post("/:id/post", validUser, async (req, res) => {
 router.get("/:id/comment", async (req, res) => {
   let comments = [];
 try {
+  console.log("______________________TEST!_______________________")
+  comments1 = await Comment.find().sort({
+      created: -1
+  }).populate('myUser');
+  console.log("get comments returned these comments: ", comments1)
+
+  console.log("all comments", )
+  
   comments = await Comment.find({
     photo: req.body.photo
   }).sort({
