@@ -59,7 +59,7 @@ export default {
   },
   methods: {
       clearDatabase(){
-        this.photos = await axios.delete("/api/photos/");
+        await axios.delete("/api/photos/");
       },
       backToDisplay() {
         this.photos = null;
