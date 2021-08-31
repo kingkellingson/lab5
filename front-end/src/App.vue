@@ -8,6 +8,11 @@
       </nav>
     </header>
     <router-view />
+    <!-- footer -->
+    <div class="footer">
+      <p>Each Website made with &#10084; </p>
+      <p><a href="https://github.com/BYU-CS-260-Winter-2021/lab-5-photo-bomb-kingkellingson">https://github.com/BYU-CS-260-Winter-2021/lab-5-photo-bomb-kingkellingson</a></p>
+    </div>
   </div>
 </template>
 
@@ -65,6 +70,28 @@ h2 {
 .pure-button-primary {
   background-color: #277E8E;
 }
+
+/* Footer  */
+.footer {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1em;
+    opacity: .25;
+    text-align: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    transition: opacity 1s ease-in-out;
+}
+.footer {
+    color: currentColor;
+}
+.footer a {
+    text-decoration: none;
+}
+.footer:hover {
+    opacity: .75;
+}
+
 </style>
 
 
