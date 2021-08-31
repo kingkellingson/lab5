@@ -150,6 +150,11 @@ router.post("/:id/post", validUser, async (req, res) => {
   let myPhoto = await Photo.find({
     _id: req.params.id
   })
+  if (!myPhoto) {
+    return res.send({
+      comment: 'error: no photo'
+    })
+  }
 
   const myComment = new Comment({
     user: req.user,//possibly an error here
