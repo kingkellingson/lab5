@@ -35,9 +35,9 @@
     <div class="comment">
         <div class="commentToAdd">
           comment added!
-            <h3>Comment Added {{formatDate(comment.created)}}</h3>
+            <h3>Added {{formatDate(comment.created)}}</h3>
             <p><i>{{comment.words}}</i></p>
-            <!-- <p>-- {{comment.myUser.firstName}} {{commment.myUser.lastName}}</p> -->
+            <p>-- {{comment.myUser.firstName}} {{commment.myUser.lastName}}</p>
 
         </div>
     </div>
