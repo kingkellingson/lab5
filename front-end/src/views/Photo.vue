@@ -19,23 +19,23 @@
     <form class="pure-form" v-if="creating" @submit.prevent="addComment">
       <legend>Add Comment:</legend>
       <fieldset>
-          <textarea v-model="problem"></textarea>
+          <textarea v-model="commentToAdd"></textarea>
           <br />
           <button @click="cancelCreating" class="pure-button space-right">Cancel</button>
           <button class="pure-button pure-button-primary" type="submit">Submit</button>
       </fieldset>
     </form>
   </div>
-  <div v-for="ticket in tickets" v-bind:key="ticket.id">
+  <!-- <div v-for="ticket in comments" v-bind:key="ticket.id">
     <div class="ticket">
-        <div class="problem">
+        <div class="commentToAdd">
             <h3>Comment Added {{time(ticket.created)}}</h3>
-            <p>{{ticket.problem}}</p>
+            <p>{{ticket.commentToAdd}}</p>
             <p v-if="ticket.response"><i>{{ticket.response}}</i></p>
             <p v-else><i>No response yet</i></p>
         </div>
     </div>
-  </div>
+  </div> -->
 </div>
 </template>
 
@@ -50,8 +50,8 @@ export default {
       photos: '',
       path: '',
       creating: false,
-      problem: '',
-      tickets: [],
+      commentToAdd: '',
+      comments: [],
     }
   },
   methods: {
@@ -70,9 +70,10 @@ export default {
      async addComment () {
       try {
         await axios.post("/api/comments/", {
-          photo: photos.data[0]
+          photo: this.photos.data[0],
+          commentToAdd: this.commentToAdd
         });
-        this.problem = "";
+        this.commentToAdd = "";
         this.creating = false;
         this.getComments();
         return true;
@@ -82,8 +83,8 @@ export default {
     },
     async getComments() {
       try {
-        // let response = await axios.get("/api/tickets");
-        // this.tickets = response.data.tickets;
+        // let response = await axios.get("/api/comments/");
+        // this.comments = response.data.comments;
         console.log ("getComments called!")
         return true;
       } catch (error) {
