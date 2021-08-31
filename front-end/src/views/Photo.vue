@@ -26,16 +26,16 @@
       </fieldset>
     </form>
   </div>
-  <!-- <div v-for="ticket in comments" v-bind:key="ticket.id">
-    <div class="ticket">
+  <div v-for="comment in comments" v-bind:key="comment.id">
+    <div class="comment">
         <div class="commentToAdd">
-            <h3>Comment Added {{time(ticket.created)}}</h3>
-            <p>{{ticket.commentToAdd}}</p>
-            <p v-if="ticket.response"><i>{{ticket.response}}</i></p>
-            <p v-else><i>No response yet</i></p>
+            <h3>Comment Added {{time(comment.created)}}</h3>
+            <p><i>{{comment.words}}</i></p>
+            <p>-- {{comment.user.firstName}} {{commment.user.lastName</p>
+
         </div>
     </div>
-  </div> -->
+  </div>
 </div>
 </template>
 
@@ -62,11 +62,11 @@ export default {
         // return photos.data;
       },
       formatDate(date) {
-      if (moment(date).diff(Date.now(), 'days') < 15)
-        return moment(date).fromNow();
-      else
-        return moment(date).format('d MMMM YYYY');
-    },
+        if (moment(date).diff(Date.now(), 'days') < 15)
+          return moment(date).fromNow();
+        else
+          return moment(date).format('d MMMM YYYY');
+      },
      async addComment () {
       try {
         await axios.post("/api/comments/", {
@@ -83,8 +83,8 @@ export default {
     },
     async getComments() {
       try {
-        // let response = await axios.get("/api/comments/");
-        // this.comments = response.data.comments;
+        let response = await axios.get("/api/comments/");
+        this.comments = response.data.comments;
         console.log ("getComments called!")
         return true;
       } catch (error) {

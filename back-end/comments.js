@@ -34,35 +34,54 @@ const Comment = mongoose.model('Comment', commentSchema);
 
 
   //create a comment
-router.post('/', validUser, async (req, res) => {
+// router.post('/', validUser, async (req, res) => {
     //check parameters
-    console.log("Received: ", req)
+    // console.log("Received: ", req)
+//   });
+
+
+
+//   create a comment
+router.post('/', validUser, async (req, res) => {
+    // check parameters
+    if (!req)
+      return res.status(400).send({
+        message: "Must upload a file."
+      });
+    
+    const myComment = new Comment({
+      user: req.body.photo.user,
+      photo: req.body.photo,
+      words: req.body.commentToAdd
+    });
+    try {
+      await myComment.save();
+      return res.send({
+        comment: myComment
+      });
+    } catch (error) {
+      console.log(error);
+      return res.sendStatus(500);
+    }
   });
 
 
-
-  //create a comment
-// router.post('/', validUser, async (req, res) => {
-    // check parameters
-//     if (!req)
-//       return res.status(400).send({
-//         message: "Must upload a file."
-//       });
+  // get comments -- will list tickets that a user has submitted
+router.get('/', async (req, res) => {
+    let comments = [];
+  try {
+    comments = await Comment.find().sort({
+        created: -1
+    });
     
-//     const comment = new Comment({
-//       user: req.user,
-//       photo: req.photo,
-//     });
-//     try {
-//       await ticket.save();
-//       return res.send({
-//         ticket: ticket
-//       });
-//     } catch (error) {
-//       console.log(error);
-//       return res.sendStatus(500);
-//     }
-//   });
+    return res.send({
+        comments: comments
+    });
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(500);
+  }
+});
 
 
 module.exports = {
