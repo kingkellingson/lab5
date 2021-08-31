@@ -9,20 +9,33 @@
     <img :src='photos.data[0].path' alt="no image due to error">
   </div>
   <p class="photoDescription">Description: {{photos.data[0].description}}</p>
-  <div>
-        <button @click="setCreating" class="pure-button button-xsmall">
-            <i class="fas fa-plus" />
-        </button>
-  </div>
-  <form class="pure-form" v-if="creating" @submit.prevent="addTicket">
-    <legend>Add Comment:</legend>
-    <fieldset>
-        <textarea v-model="problem"></textarea>
-        <br />
-        <button @click="cancelCreating" class="pure-button space-right">Cancel</button>
-        <button class="pure-button pure-button-primary" type="submit">Submit</button>
-    </fieldset>
+  
+  <div v-if="user">
+    <div>
+      <button @click="setCreating" class="pure-button button-xsmall">
+          <i class="fas fa-plus" />
+      </button>
+    </div>
+    <form class="pure-form" v-if="creating" @submit.prevent="addTicket">
+      <legend>Add Comment:</legend>
+      <fieldset>
+          <textarea v-model="problem"></textarea>
+          <br />
+          <button @click="cancelCreating" class="pure-button space-right">Cancel</button>
+          <button class="pure-button pure-button-primary" type="submit">Submit</button>
+      </fieldset>
     </form>
+  </div>
+  <!-- <div v-for="ticket in tickets" v-bind:key="ticket.id">
+    <div class="ticket">
+        <div class="problem">
+            <h3><label>{{ticket.status}}</label> Problem reported {{time(ticket.created)}}</h3>
+            <p>{{ticket.problem}}</p>
+            <p v-if="ticket.response"><i>{{ticket.response}}</i></p>
+            <p v-else><i>No response yet</i></p>
+        </div>
+    </div>
+  </div> -->
 </div>
 </template>
 
@@ -82,9 +95,12 @@ export default {
     
     this.getPhoto();
     // this.photos = this.getPhoto();
-    
-    
   },
+  computed: {
+    user() {
+      return this.$root.$data.user;
+    }
+  }
 }
 </script>
 
