@@ -16,7 +16,7 @@
           <i class="fas fa-plus" />
       </button>
     </div>
-    <form class="pure-form" v-if="creating" @submit.prevent="addTicket">
+    <form class="pure-form" v-if="creating" @submit.prevent="addComment">
       <legend>Add Comment:</legend>
       <fieldset>
           <textarea v-model="problem"></textarea>
@@ -26,16 +26,16 @@
       </fieldset>
     </form>
   </div>
-  <!-- <div v-for="ticket in tickets" v-bind:key="ticket.id">
+  <div v-for="ticket in tickets" v-bind:key="ticket.id">
     <div class="ticket">
         <div class="problem">
-            <h3><label>{{ticket.status}}</label> Problem reported {{time(ticket.created)}}</h3>
+            <h3>Comment Added {{time(ticket.created)}}</h3>
             <p>{{ticket.problem}}</p>
             <p v-if="ticket.response"><i>{{ticket.response}}</i></p>
             <p v-else><i>No response yet</i></p>
         </div>
     </div>
-  </div> -->
+  </div>
 </div>
 </template>
 
@@ -67,18 +67,31 @@ export default {
       else
         return moment(date).format('d MMMM YYYY');
     },
-     async addTicket() {
+     async addComment () {
       try {
-        // await axios.post("/api/tickets", {
-        //   problem: this.problem
-        // });
+        await axios.post("/api/comments/", {
+          photo: photos.data[0]
+        });
         this.problem = "";
         this.creating = false;
-        this.getTickets();
+        this.getComments();
         return true;
       } catch (error) {
         console.log(error);
       }
+    },
+    async getComments() {
+      try {
+        // let response = await axios.get("/api/tickets");
+        // this.tickets = response.data.tickets;
+        console.log ("getComments called!")
+        return true;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    time(d) {
+      return moment(d).format('D MMMM YYYY, h:mm:ss a');
     },
     setCreating() {
         this.creating = true;
@@ -93,6 +106,7 @@ export default {
     console.log("you have created: ", this.id);
     
     this.getPhoto();
+    this.getComments();
     // this.photos = this.getPhoto();
   },
   computed: {
