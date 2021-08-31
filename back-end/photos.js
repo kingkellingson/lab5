@@ -194,7 +194,7 @@ try {
     photo: req.body.photo
   }).sort({
       created: -1
-  }).populate('user');
+  }).populate('myUser');
   console.log("get comments returned these comments: ", comments)
 
   return res.send({
