@@ -26,7 +26,12 @@ export default {
   },
   created() {
     this.getPhotos();
-    this.user();
+    try {
+      let response = await axios.get('/api/users');
+      this.$root.$data.user = response.data.user;
+    } catch (error) {
+      this.$root.$data.user = null;
+    }
   },
   computed: {
     user() {
