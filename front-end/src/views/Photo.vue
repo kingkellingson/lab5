@@ -1,5 +1,7 @@
 <template>
 <div>
+  <router-link to="/"><button @click="backToDisplay" class="pure-button space-right">Cancel</button></router-link>
+  
   <div class="photoInfo">
         <p class="photoTitle">Title: {{photos.data[0].title}}</p>
         <p class="photoName">Taken by: {{photos.data[0].user.firstName}} {{photos.data[0].user.lastName}}</p>
@@ -56,6 +58,9 @@ export default {
     }
   },
   methods: {
+      backToDisplay() {
+        this.photos = null;
+      },
       async getPhoto() {
         this.photos = await axios.get("/api/photos/"+this.id);
         console.log("Returned Photo Object: ", this.photos);
