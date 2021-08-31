@@ -34,7 +34,7 @@
           comment added!
             <h3>Comment Added {{time(comment.created)}}</h3>
             <p><i>{{comment.words}}</i></p>
-            <p>-- {{comment.myUser.firstName}} {{commment.myUser.lastName}}</p>
+            <!-- <p>-- {{comment.myUser.firstName}} {{commment.myUser.lastName}}</p> -->
 
         </div>
     </div>
