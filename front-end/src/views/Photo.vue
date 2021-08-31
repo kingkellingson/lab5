@@ -88,6 +88,7 @@ export default {
         let response = await axios.get("/api/photos/"+this.id+"/comment");
         this.comments = response.data.comments;
         console.log ("getComments called!")
+        console.log ("returned these comments: ", this.comments)
         return true;
       } catch (error) {
         console.log(error);
