@@ -1,7 +1,7 @@
 <template>
 <div>
-  <router-link to="/"><button @click="backToDisplay" class="pure-button space-right">Cancel</button></router-link>
-  
+  <router-link to="/"><button @click="backToDisplay" class="pure-button space-right">Close</button></router-link>
+  <button @click="clearDatabase" class="pure-button space-right">Close</button>
   <div class="photoInfo">
         <p class="photoTitle">Title: {{photos.data[0].title}}</p>
         <p class="photoName">Taken by: {{photos.data[0].user.firstName}} {{photos.data[0].user.lastName}}</p>
@@ -58,6 +58,9 @@ export default {
     }
   },
   methods: {
+      clearDatabase(){
+        this.photos = await axios.delete("/api/photos/");
+      },
       backToDisplay() {
         this.photos = null;
       },

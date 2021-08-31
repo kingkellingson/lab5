@@ -213,6 +213,18 @@ try {
 });
 
 
+
+// delete all comments
+router.delete("/", async (req, res) => {
+  try {
+    await Comment.delete({})
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(500);
+  }
+});
+
 // get a single photo's comments
 
 
