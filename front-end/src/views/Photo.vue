@@ -84,7 +84,10 @@ export default {
     },
     async getComments() {
       try {
-        let response = await axios.get("/api/photos/"+this.id+"/comment");
+        let response = await axios.get("/api/photos/"+this.id+"/comment", {
+          photo: this.photos.data[0],
+          commentToAdd: this.commentToAdd,
+        });
         this.comments = response.data.comments;
         console.log ("getComments called!");
         console.log ("returned these comments: ", this.comments);
