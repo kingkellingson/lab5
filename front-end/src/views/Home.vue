@@ -1,5 +1,9 @@
 <template>
 <div class="home">
+   <div class="menu" v-if="user">
+    <p>Welcome to the HomePage!</p>
+    <h2>{{user.firstName}} {{user.lastName}} <a @click="logout"><i class="fas fa-sign-out-alt"></i></a></h2>
+  </div>
   <image-gallery :photos="photos" />
   <p v-if="error">{{error}}</p>
 </div>
@@ -23,6 +27,11 @@ export default {
   created() {
     this.getPhotos();
   },
+  computed: {
+    user() {
+      return this.$root.$data.user;
+    },
+  },
   methods: {
     async getPhotos() {
       try {
@@ -31,6 +40,14 @@ export default {
         this.photos = response.data;
       } catch (error) {
         this.error = error.response.data.message;
+      }
+    },
+    async logout() {
+      try {
+        await axios.delete("/api/users");
+        this.$root.$data.user = null;
+      } catch (error) {
+        this.$root.$data.user = null;
       }
     },
   }

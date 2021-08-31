@@ -11,7 +11,8 @@
     <img :src='photos.data[0].path' alt="no image due to error">
   </div>
   <p class="photoDescription">Description: {{photos.data[0].description}}</p>
-  
+  <!-- only displays if there is a user -->
+  button here:
   <div v-if="user">
     <div>
       <button @click="setCreating" class="pure-button button-xsmall">
@@ -28,7 +29,9 @@
       </fieldset>
     </form>
   </div>
+  comments here: 
   <div v-for="comment in comments" v-bind:key="comment._id">
+    
     <div class="comment">
         <div class="commentToAdd">
           comment added!
