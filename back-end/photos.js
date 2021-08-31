@@ -217,9 +217,20 @@ try {
 
 
 // delete all comments
-router.delete("/", async (req, res) => {
+router.delete("/cc", async (req, res) => {
   try {
     await Comment.deleteMany({})
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(500);
+  }
+});
+
+// delete all pictures
+router.delete("/cp", async (req, res) => {
+  try {
+    await Photo.deleteMany({})
     res.sendStatus(200);
   } catch (error) {
     console.log(error);

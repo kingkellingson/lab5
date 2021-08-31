@@ -12,7 +12,6 @@
   </div>
   <p class="photoDescription">Description: {{photos.data[0].description}}</p>
   <!-- only displays if there is a user -->
-  button here:
   <div v-if="user">
     <div>
       <button @click="setCreating" class="pure-button button-xsmall">
@@ -28,8 +27,7 @@
           <button class="pure-button pure-button-primary" type="submit">Submit</button>
       </fieldset>
     </form>
-  </div>
-  comments here: 
+  </div> 
   <div v-for="comment in comments" v-bind:key="comment._id">
     
     <div class="comment">
@@ -76,7 +74,7 @@ export default {
   },
   methods: {
       async clearDatabase(){
-        await axios.delete("/api/photos/");
+        await axios.delete("/api/photos/cc");
       },
       backToDisplay() {
         this.photos = null;
