@@ -1,7 +1,7 @@
 <template>
 <div class="home">
    <div class="menu" v-if="user">
-    <p>Welcome to the HomePage!</p>
+    <p>Welcome!</p>
     <h2>{{user.firstName}} {{user.lastName}} <a @click="logout"><i class="fas fa-sign-out-alt"></i></a></h2>
   </div>
   <image-gallery :photos="photos" />
@@ -54,3 +54,14 @@ export default {
 }
 </script>
 
+
+<style scoped>
+.menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu h2 {
+  font-size: 14px;
+}
+</style>
