@@ -191,15 +191,15 @@ router.get("/:id/comment", validUser, async (req, res) => {
   let comments = [];
 try {
   console.log("______________________TEST!_______________________")
-  console.log("reqest", req)
+  // console.log("request", req)
   comments1 = await Comment.find().sort({
       created: -1
   }).populate('myUser');
   console.log("all comments", comments1)
 
-  console.log("searching with this: ",req.body.photo )  
+  console.log("searching with this: ",req.params.id )  
   comments = await Comment.find({
-    photo: req.body.photo
+    photo: req.params.id
   }).sort({
       created: -1
   }).populate('myUser');
