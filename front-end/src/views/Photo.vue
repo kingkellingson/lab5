@@ -73,7 +73,6 @@ export default {
         await axios.post("/api/photos/"+this.id+"/post", {
           photo: this.photos.data[0],
           commentToAdd: this.commentToAdd,
-          commentingUser: this.$root.$data.user
         });
         this.commentToAdd = "";
         this.creating = false;
