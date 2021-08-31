@@ -153,7 +153,7 @@ router.post("/:id/post", validUser, async (req, res) => {
 
   const myComment = new Comment({
     user: req.user,//possibly an error here
-    photo: req.body.photo,
+    photo: myPhoto,
     words: req.body.commentToAdd
   });
 
