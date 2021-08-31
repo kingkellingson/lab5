@@ -157,8 +157,6 @@ router.post("/:id/post", validUser, async (req, res) => {
     words: req.body.commentToAdd
   });
 
-  myPhoto.ownComments.push(myComment)
-
   console.log("added comment: ", myComment)
   console.log("with user: ", myComment.body.user)
   try {
