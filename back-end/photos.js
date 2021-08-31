@@ -169,6 +169,10 @@ router.post("/:id/post", validUser, async (req, res) => {
   }).populate('user');
   console.log("Found photo: ", myPhoto2)
 
+  console.log("______________________TEST!_______________________")
+  console.log("params: ", req.params.id)
+  console.log("body: ", req.body.photo)
+
 
   try {
     await myComment.save();
@@ -182,12 +186,12 @@ router.post("/:id/post", validUser, async (req, res) => {
 });
 
 
-// get comments -- will list tickets that a user has submitted
+// get comments -- will list comments for the specified photo
 router.get("/:id/comment", async (req, res) => {
   let comments = [];
 try {
   comments = await Comment.find({
-    _id: req.params.id
+    photo: req.params.id
   }).sort({
       created: -1
   }).populate('user');
