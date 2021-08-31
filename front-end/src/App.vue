@@ -87,6 +87,7 @@ h2 {
 }
 .footer a {
     text-decoration: none;
+    color: black;
 }
 .footer:hover {
     opacity: .75;
