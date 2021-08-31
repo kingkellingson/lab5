@@ -164,7 +164,7 @@ router.post("/:id/post", validUser, async (req, res) => {
   });
 
   console.log("added comment: ", myComment)
-  console.log("with user: ", myComment.user)
+  console.log("with user: ", myComment.myUser)
   console.log("with photo: ", myComment.photo)
   try {
     await myComment.save();
