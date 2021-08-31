@@ -132,4 +132,26 @@ p {
   margin: 0px;
 }
 
+textarea {
+  width: 100%;
+  max-width: 500px;
+}
+
+h3 {
+  font-size: 12px;
+  font-weight: normal;
+  background-color: #ccc;
+  padding: 10px 20px;
+}
+
+
+label {
+  background-color: #000;
+  color: white;
+  padding: 5px;
+  border-radius: 30px;
+  font-size: 12px;
+  margin-right: 10px;
+}
+
 </style>
