@@ -35,7 +35,7 @@
     <div class="comment">
         <div class="commentToAdd">
           comment added!
-            <h3>Comment Added {{time(comment.created)}}</h3>
+            <h3>Comment Added {{formatDate(comment.created)}}</h3>
             <p><i>{{comment.words}}</i></p>
             <!-- <p>-- {{comment.myUser.firstName}} {{commment.myUser.lastName}}</p> -->
 
@@ -59,6 +59,20 @@ export default {
       commentToAdd: '',
       comments: [],
     }
+  },
+  created() {
+    this.id = this.$route.params.id;
+    
+    console.log("you have created: ", this.id);
+    
+    this.getPhoto();
+    this.getComments();
+    // this.photos = this.getPhoto();
+  },
+  computed: {
+    user() {
+      return this.$root.$data.user;
+    },
   },
   methods: {
       async clearDatabase(){
@@ -97,11 +111,8 @@ export default {
     },
     async getComments() {
       try {
-        this.getPhoto()
-        let response = await axios.get("/api/photos/"+this.id+"/comment", {
-          photo: this.photos.data[0],
-          commentToAdd: this.commentToAdd,
-        });
+        //this.getPhoto()
+        let response = await axios.get("/api/photos/"+this.id+"/comment");
         this.comments = response.data.comments;
         console.log ("getComments called!");
         console.log ("returned these comments: ", this.comments);
@@ -110,9 +121,6 @@ export default {
         console.log(error);
       }
     },
-    time(d) {
-      return moment(d).format('D MMMM YYYY, h:mm:ss a');
-    },
     setCreating() {
         this.creating = true;
     },
@@ -120,20 +128,7 @@ export default {
         this.creating = false;
     },
   },
-  created() {
-    this.id = this.$route.params.id;
-    
-    console.log("you have created: ", this.id);
-    
-    this.getPhoto();
-    this.getComments();
-    // this.photos = this.getPhoto();
-  },
-  computed: {
-    user() {
-      return this.$root.$data.user;
-    },
-  }
+  
 }
 </script>
 
