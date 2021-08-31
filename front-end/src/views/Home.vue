@@ -24,7 +24,7 @@ export default {
       error: '',
     }
   },
-  created() {
+  async created() {
     this.getPhotos();
     try {
       let response = await axios.get('/api/users');
