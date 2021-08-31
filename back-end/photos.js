@@ -191,6 +191,7 @@ router.get("/:id/comment", validUser, async (req, res) => {
   let comments = [];
 try {
   console.log("______________________TEST!_______________________")
+  console.log("reqest", req)
   comments1 = await Comment.find().sort({
       created: -1
   }).populate('myUser');
