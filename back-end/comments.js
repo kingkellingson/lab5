@@ -65,6 +65,10 @@ router.post('/', validUser, async (req, res) => {
 //   });
 
 
+module.exports = {
+    model: Comment,
+    routes: router,
+  }
 
 
 
