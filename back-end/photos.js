@@ -111,7 +111,7 @@ router.get("/:id", async (req, res) => {
 
 // This is the schema for a ticket
 const commentSchema = new mongoose.Schema({
-  user: {
+  myUser: {
     type: mongoose.Schema.ObjectId,
     ref: "User"
   },
@@ -158,7 +158,7 @@ router.post("/:id/post", validUser, async (req, res) => {
   }
 
   let myComment = new Comment({
-    user: req.user,//possibly an error here
+    myUser: req.user,//possibly an error here
     photo: photo,
     words: req.body.commentToAdd
   });
