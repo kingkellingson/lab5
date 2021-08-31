@@ -160,12 +160,12 @@ router.post("/:id/post", validUser, async (req, res) => {
   console.log("with user: ", myComment.myUser)
   console.log("with photo: ", myComment.photo)
   console.log("______________________TEST!_______________________")
-  
+
   let myPhoto1 = await Photo.find().populate('user');
   console.log("All found photos: ", myPhoto1)
 
   let myPhoto2 = await Photo.find({
-    _id: req.params.id
+    _id: req.body.photo,
   }).populate('user');
   console.log("Found photo: ", myPhoto2)
 
