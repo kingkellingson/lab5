@@ -187,7 +187,7 @@ router.post("/:id/post", validUser, async (req, res) => {
 
 
 // get comments -- will list comments for the specified photo
-router.get("/:id/comment", async (req, res) => {
+router.get("/:id/comment", validUser, async (req, res) => {
   let comments = [];
 try {
   console.log("______________________TEST!_______________________")
@@ -195,7 +195,8 @@ try {
       created: -1
   }).populate('myUser');
   console.log("all comments", comments1)
-  
+
+  console.log("searching with this: ",req.body.photo )  
   comments = await Comment.find({
     photo: req.body.photo
   }).sort({
@@ -217,7 +218,7 @@ try {
 // delete all comments
 router.delete("/", async (req, res) => {
   try {
-    await Comment.delete({})
+    await Comment.deleteMany({})
     res.sendStatus(200);
   } catch (error) {
     console.log(error);

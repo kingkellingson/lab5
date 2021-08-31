@@ -1,7 +1,7 @@
 <template>
 <div>
   <router-link to="/"><button @click="backToDisplay" class="pure-button space-right">Close</button></router-link>
-  <button @click="clearDatabase" class="pure-button space-right">Close</button>
+  <button @click="clearDatabase" class="pure-button space-right">Clear Database</button>
   <div class="photoInfo">
         <p class="photoTitle">Title: {{photos.data[0].title}}</p>
         <p class="photoName">Taken by: {{photos.data[0].user.firstName}} {{photos.data[0].user.lastName}}</p>
@@ -58,13 +58,15 @@ export default {
     }
   },
   methods: {
-      clearDatabase(){
+      async clearDatabase(){
         await axios.delete("/api/photos/");
       },
       backToDisplay() {
         this.photos = null;
+	this.id = null
       },
       async getPhoto() {
+        this.id = this.$route.params.id;
         this.photos = await axios.get("/api/photos/"+this.id);
         console.log("Returned Photo Object: ", this.photos);
         console.log("with array: ", this.photos.data);
@@ -92,7 +94,8 @@ export default {
     },
     async getComments() {
       try {
-        let response = await axios.get("/api/photos/"+this.id+"/comment", {
+          this.getPhoto()
+          let response = await axios.get("/api/photos/"+this.id+"/comment", {
           photo: this.photos.data[0],
           commentToAdd: this.commentToAdd,
         });
@@ -126,7 +129,7 @@ export default {
   computed: {
     user() {
       return this.$root.$data.user;
-    }
+    },
   }
 }
 </script>
