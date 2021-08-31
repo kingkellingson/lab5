@@ -28,13 +28,13 @@
       </fieldset>
     </form>
   </div>
-  <div v-for="comment in comments" v-bind:key="comment.id">
+  <div v-for="comment in comments" v-bind:key="comment._id">
     <div class="comment">
         <div class="commentToAdd">
           comment added!
-            <!-- <h3>Comment Added {{time(comment.created)}}</h3>
+            <h3>Comment Added {{time(comment.created)}}</h3>
             <p><i>{{comment.words}}</i></p>
-            <p>-- {{comment.user.firstName}} {{commment.user.lastName}}</p> -->
+            <p>-- {{comment.myUser.firstName}} {{commment.myUser.lastName}}</p>
 
         </div>
     </div>
@@ -94,8 +94,8 @@ export default {
     },
     async getComments() {
       try {
-          this.getPhoto()
-          let response = await axios.get("/api/photos/"+this.id+"/comment", {
+        this.getPhoto()
+        let response = await axios.get("/api/photos/"+this.id+"/comment", {
           photo: this.photos.data[0],
           commentToAdd: this.commentToAdd,
         });
