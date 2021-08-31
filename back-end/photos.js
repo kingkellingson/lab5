@@ -147,15 +147,8 @@ router.post("/:id/post", validUser, async (req, res) => {
       message: "Must upload a file."
     });
   
-  // const photo = await Photo.find({
-  //   _id: req.params.id
-  // })
+  
   console.log("try photo: ", req.body.photo)
-  // if (!photo) {
-  //   return res.send({
-  //     comment: 'error: no photo'
-  //   })
-  // }
 
   let myComment = new Comment({
     myUser: req.user,//possibly an error here
@@ -166,6 +159,17 @@ router.post("/:id/post", validUser, async (req, res) => {
   console.log("added comment: ", myComment)
   console.log("with user: ", myComment.myUser)
   console.log("with photo: ", myComment.photo)
+  console.log("______________________TEST!_______________________")
+  
+  let myPhoto1 = await Photo.find().populate('user');
+  console.log("All found photos: ", myPhoto1)
+
+  let myPhoto2 = await Photo.find({
+    _id: req.params.id
+  }).populate('user');
+  console.log("Found photo: ", myPhoto2)
+
+
   try {
     await myComment.save();
     return res.send({
