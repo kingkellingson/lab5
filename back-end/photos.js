@@ -150,6 +150,7 @@ router.post("/:id/post", validUser, async (req, res) => {
   let myPhoto = await Photo.find({
     _id: req.params.id
   })
+  console.log("try photo: ", myPhoto)
   if (!myPhoto) {
     return res.send({
       comment: 'error: no photo'
@@ -164,6 +165,7 @@ router.post("/:id/post", validUser, async (req, res) => {
 
   console.log("added comment: ", myComment)
   console.log("with user: ", myComment.user)
+  console.log("with photo: ", myComment.photo)
   try {
     await myComment.save();
     return res.send({
