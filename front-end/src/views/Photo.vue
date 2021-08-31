@@ -70,9 +70,10 @@ export default {
       },
      async addComment () {
       try {
-        await axios.post("/api/comments/", {
+        await axios.post("/api/photos/"+this.id+"/post", {
           photo: this.photos.data[0],
-          commentToAdd: this.commentToAdd
+          commentToAdd: this.commentToAdd,
+          commentingUser: this.$root.$data.user
         });
         this.commentToAdd = "";
         this.creating = false;
@@ -84,7 +85,7 @@ export default {
     },
     async getComments() {
       try {
-        let response = await axios.get("/api/comments/");
+        let response = await axios.get("/api/photos/"+this.id+"/comment");
         this.comments = response.data.comments;
         console.log ("getComments called!")
         return true;

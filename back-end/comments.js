@@ -54,6 +54,8 @@ router.post('/', validUser, async (req, res) => {
       photo: req.body.photo,
       words: req.body.commentToAdd
     });
+    console.log("added comment: ", myComment)
+    console.log("with user: ", myComment.body.user)
     try {
       await myComment.save();
       return res.send({
@@ -72,7 +74,7 @@ router.get('/', async (req, res) => {
   try {
     comments = await Comment.find().sort({
         created: -1
-    });
+    }).populate('user');
     
     return res.send({
         comments: comments

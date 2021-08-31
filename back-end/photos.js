@@ -24,6 +24,7 @@ const photoSchema = new mongoose.Schema({
     path: String,
     title: String,
     description: String,
+    ownComments: Array,
     created: {
       type: Date,
       default: Date.now
@@ -103,6 +104,98 @@ router.get("/:id", async (req, res) => {
   }
 });
   
+
+//////////////////////////////
+///////////COMMENTS//////////
+/////////////////////////////
+
+// This is the schema for a ticket
+const commentSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User"
+  },
+  photo: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Photo"
+    },
+  words: String,
+  created: {
+    type: Date,
+    default: Date.now
+  },
+});
+
+
+// The model for a comment
+const Comment = mongoose.model('Comment', commentSchema);
+
+
+//create a comment
+// router.post('/', validUser, async (req, res) => {
+  //check parameters
+  // console.log("Received: ", req)
+//   });
+
+
+
+//   create a comment on that specific photo
+router.post("/:id/post", validUser, async (req, res) => {
+  // check parameters
+  if (!req)
+    return res.status(400).send({
+      message: "Must upload a file."
+    });
+  
+  let myPhoto = await Photo.find({
+    _id: req.params.id
+  })
+
+  const myComment = new Comment({
+    user: req.body.commentingUser,//possibly an error here
+    photo: req.body.photo,
+    words: req.body.commentToAdd
+  });
+
+  myPhoto.ownComments.push(myComment)
+
+  console.log("added comment: ", myComment)
+  console.log("with user: ", myComment.body.user)
+  try {
+    await myComment.save();
+    return res.send({
+      comment: myComment
+    });
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(500);
+  }
+});
+
+
+// get comments -- will list tickets that a user has submitted
+router.get("/:id/comment", async (req, res) => {
+  let comments = [];
+try {
+  comments = await Comment.find({
+    _id: req.params.id
+  }).sort({
+      created: -1
+  }).populate('user');
+  console.log("get comments returned these comments: ", comments)
+
+  return res.send({
+      comments: comments
+  });
+} catch (error) {
+  console.log(error);
+  return res.sendStatus(500);
+}
+});
+
+
+// get a single photo's comments
+
 
 
   module.exports = {
