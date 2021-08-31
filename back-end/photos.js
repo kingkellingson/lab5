@@ -152,13 +152,13 @@ router.post("/:id/post", validUser, async (req, res) => {
   })
 
   const myComment = new Comment({
-    user: req.body.commentingUser,//possibly an error here
+    user: req.user,//possibly an error here
     photo: req.body.photo,
     words: req.body.commentToAdd
   });
 
   console.log("added comment: ", myComment)
-  console.log("with user: ", myComment.body.user)
+  console.log("with user: ", myComment.user)
   try {
     await myComment.save();
     return res.send({
