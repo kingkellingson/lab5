@@ -49,7 +49,6 @@ export default {
       id: '',
       photos: '',
       path: '',
-      user: null,
       creating: false,
       problem: '',
       tickets: [],
