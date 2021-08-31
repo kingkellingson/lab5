@@ -147,7 +147,7 @@ router.post("/:id/post", validUser, async (req, res) => {
       message: "Must upload a file."
     });
   
-  let myPhoto = await Photo.find({
+  const myPhoto = await Photo.find({
     _id: req.params.id
   })
   console.log("try photo: ", myPhoto)
