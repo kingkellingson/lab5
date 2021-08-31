@@ -191,7 +191,7 @@ router.get("/:id/comment", async (req, res) => {
   let comments = [];
 try {
   comments = await Comment.find({
-    photo: req.params.id
+    _id: req.params.id
   }).sort({
       created: -1
   }).populate('user');
