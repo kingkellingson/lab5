@@ -26,6 +26,7 @@ export default {
   },
   created() {
     this.getPhotos();
+    this.user();
   },
   computed: {
     user() {
